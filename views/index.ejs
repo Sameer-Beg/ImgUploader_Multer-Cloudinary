@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Uploader</title>
+    <style>
+        
+  /* Reset and base styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  body {
+    background-color: #0f0f0f;
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+  }
+
+  .container {
+    background-color: #1e1e2f;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .for-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  input[type="file"] {
+    background: #2d2d3f;
+    border: none;
+    padding: 12px;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  input[type="submit"] {
+    background: #61dafb;
+    border: none;
+    padding: 12px;
+    color: #000;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  input[type="submit"]:hover {
+    background: #21a1f1;
+  }
+
+  #Uploaded-img-container {
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  #Uploaded-img-container h2 {
+    color: #4caf50;
+    margin-bottom: 15px;
+  }
+
+  #Uploaded-img-container img {
+    max-width: 100%;
+    border: 3px solid #61dafb;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(97, 218, 251, 0.3);
+  }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <div class="for-group">
+          <input type="file" name="file" id="file-input" />
+        </div>
+        <div class="for-group">
+          <input type="submit" value="Uploader" />
+        </div>
+      </form>
+    </div>
+    <div id="Uploaded-img-container">
+        <% if(url) { %> 
+            <h2>File uploaded successfully</h2>
+            <img src="<%= url %>" alt="Uploaded img ">
+        <% } %>
+    </div>
+  </body>
+</html>
